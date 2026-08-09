@@ -1,102 +1,47 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <title>蔡家鵝肉莊 菜單勾選表</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大亨堡家族聚會與聚餐遊記</title>
   <style>
-    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 20px; }
-    h1 { margin-bottom: 10px; }
-    .section { margin-bottom: 24px; }
-    .section h2 { margin-bottom: 8px; font-size: 1.2em; }
-    label { display: block; margin: 4px 0; cursor: pointer; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f6f3ee;
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC",
+                   "PingFang TC", "Microsoft JhengHei", sans-serif;
+    }
+    .card {
+      width: min(420px, calc(100% - 40px));
+      padding: 42px 30px;
+      text-align: center;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 10px 35px rgba(0,0,0,.08);
+      border: 1px solid #e8e0d7;
+    }
+    .card a {
+      display: block;
+      padding: 18px 20px;
+      border-radius: 12px;
+      background: #8b5e3c;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+    .card a:hover { opacity: .88; }
   </style>
 </head>
 <body>
-  <h1>蔡家鵝肉莊 菜單勾選表</h1>
-  <p>（價格與品項可能因分店與時間調整，僅供參考）</p>
-
-  <form id="menu-form">
-    <!-- 人氣精選 -->
-    <div class="section">
-      <h2>人氣精選</h2>
-      <label><input type="checkbox" name="dish" value="炒米粉_130"> 炒米粉 NT$130</label>
-      <label><input type="checkbox" name="dish" value="蒜泥蚵_280"> 蒜泥蚵 NT$280</label>
-      <label><input type="checkbox" name="dish" value="辣子牛肉_300"> 辣子牛肉 NT$300</label>
-      <label><input type="checkbox" name="dish" value="鵝肉半隻_940"> 鵝肉（半隻）NT$940</label>
-    </div>
-
-    <!-- 鵝肉相關 -->
-    <div class="section">
-      <h2>鵝肉相關</h2>
-      <label><input type="checkbox" name="dish" value="鵝肉_680"> 鵝肉 NT$680</label>
-      <label><input type="checkbox" name="dish" value="鵝肉前_330"> 鵝肉（前）NT$330</label>
-      <label><input type="checkbox" name="dish" value="韭菜鵝腸_200"> 韭菜鵝腸 NT$200</label>
-      <label><input type="checkbox" name="dish" value="芹菜鵝腸_280"> 芹菜鵝腸 NT$280</label>
-      <label><input type="checkbox" name="dish" value="鵝腳_24"> 鵝腳（單隻）NT$24</label>
-      <label><input type="checkbox" name="dish" value="鵝翅_36"> 鵝翅（單隻）NT$36</label>
-      <label><input type="checkbox" name="dish" value="鵝頭_84"> 鵝頭（單隻）NT$84</label>
-      <label><input type="checkbox" name="dish" value="鵝屁股"> 鵝屁股（依店家）</label>
-    </div>
-
-    <!-- 麵食 / 主食 -->
-    <div class="section">
-      <h2>麵食／主食</h2>
-      <label><input type="checkbox" name="dish" value="鵝肉麵"> 鵝肉麵（價依分店）</label>
-      <label><input type="checkbox" name="dish" value="鵝肉冬粉"> 鵝肉冬粉（價依分店）</label>
-      <label><input type="checkbox" name="dish" value="炒米粉_130b"> 炒米粉 NT$130</label>
-    </div>
-
-    <!-- 快炒類（約 NT$280 為主） -->
-    <div class="section">
-      <h2>快炒類（多為 NT$280）</h2>
-      <label><input type="checkbox" name="dish" value="香蒜中卷_490"> 香蒜中卷 NT$490</label>
-      <label><input type="checkbox" name="dish" value="牛肉炒空心菜_280"> 牛肉炒空心菜 NT$280</label>
-      <label><input type="checkbox" name="dish" value="宮保雞丁_280"> 宮保雞丁 NT$280</label>
-      <label><input type="checkbox" name="dish" value="炒海瓜子_280"> 炒海瓜子 NT$280</label>
-      <label><input type="checkbox" name="dish" value="苦瓜鹹蛋_280"> 苦瓜鹹蛋 NT$280</label>
-      <label><input type="checkbox" name="dish" value="薑絲大腸_280"> 薑絲大腸 NT$280</label>
-      <label><input type="checkbox" name="dish" value="羊肉炒空心菜_280"> 羊肉炒空心菜 NT$280</label>
-      <label><input type="checkbox" name="dish" value="蔥爆牛肉_280"> 蔥爆牛肉 NT$280</label>
-      <label><input type="checkbox" name="dish" value="紅燒豆腐_280"> 紅燒豆腐 NT$280</label>
-      <label><input type="checkbox" name="dish" value="炒劍筍_280"> 炒劍筍 NT$280</label>
-      <label><input type="checkbox" name="dish" value="炒花枝_200"> 炒花枝 NT$200</label>
-      <label><input type="checkbox" name="dish" value="塔香海香菇_280"> 塔香海香菇 NT$280</label>
-      <label><input type="checkbox" name="dish" value="炒三鮮_460"> 炒三鮮 NT$460</label>
-      <label><input type="checkbox" name="dish" value="芹菜魷魚_280"> 芹菜魷魚 NT$280</label>
-    </div>
-
-    <!-- 湯品與其他 -->
-    <div class="section">
-      <h2>湯品與其他</h2>
-      <label><input type="checkbox" name="dish" value="酸菜肚片湯_80"> 酸菜肚片湯 NT$80</label>
-      <label><input type="checkbox" name="dish" value="紅燒鰻_220"> 紅燒鰻 NT$220</label>
-      <label><input type="checkbox" name="dish" value="生魚片_200"> 生魚片 NT$200</label>
-    </div>
-
-    <!-- 合菜 / 桌菜（示意） -->
-    <div class="section">
-      <h2>合菜／桌菜（示意）</h2>
-      <label><input type="checkbox" name="dish" value="蔡家鵝肉海鮮總匯"> 蔡家鵝肉＋海鮮總匯（桌菜）</label>
-      <label><input type="checkbox" name="dish" value="龍蝦沙拉"> 龍蝦沙拉（桌菜）</label>
-      <label><input type="checkbox" name="dish" value="佛跳牆"> 佛跳牆（桌菜）</label>
-      <label><input type="checkbox" name="dish" value="豬腳麵線"> 豬腳麵線（桌菜）</label>
-      <label><input type="checkbox" name="dish" value="竹筒飯螃蟹"> 竹筒飯＋螃蟹（桌菜）</label>
-    </div>
-
-    <div class="section">
-      <button type="button" id="show-selected">顯示已勾選菜品</button>
-      <pre id="result" style="margin-top:10px; white-space: pre-wrap;"></pre>
-    </div>
-  </form>
-
-  <script>
-    document.getElementById('show-selected').addEventListener('click', () => {
-      const checked = Array.from(document.querySelectorAll('input[name="dish"]:checked'))
-        .map(cb => cb.value);
-      document.getElementById('result').textContent = checked.length
-        ? '已勾選菜品：\n' + checked.join('\n')
-        : '尚未勾選任何菜品。';
-    });
-  </script>
+  <div class="card">
+    <a href="BigPersonMeeting_20260809.html">20260809 聚餐記錄</a>
+  </div>
 </body>
 </html>
