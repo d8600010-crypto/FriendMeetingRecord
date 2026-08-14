@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>浪潮點播｜台灣女聲精選歌單</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B1F2B;
+    --ink-soft:#2E3448;
+    --paper:#F2ECDF;
+    --paper-dim:#E7DFCB;
+    --gold:#D4A24C;
+    --gold-bright:#F0BE6A;
+    --coral:#E8595F;
+    --line: rgba(242,236,223,0.14);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 15% 0%, rgba(212,162,76,0.10), transparent 45%),
+      radial-gradient(circle at 90% 15%, rgba(232,89,95,0.10), transparent 40%),
+      var(--ink);
+    color:var(--paper);
+    font-family:'Noto Sans TC', sans-serif;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:relative;
+    padding:64px 24px 40px;
+    max-width:920px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:0.35em;
+    color:var(--gold-bright);
+    text-transform:uppercase;
+    margin-bottom:18px;
+    font-weight:700;
+  }
+  h1{
+    font-family:'Noto Serif TC', serif;
+    font-weight:900;
+    font-size:clamp(34px, 6vw, 58px);
+    line-height:1.25;
+    margin:0 0 16px;
+    letter-spacing:0.02em;
+  }
+  h1 .accent{color:var(--gold-bright);}
+  .lede{
+    color:rgba(242,236,223,0.7);
+    font-size:16px;
+    max-width:520px;
+    margin:0 auto;
+    line-height:1.9;
+  }
+
+  /* ---------- Ticket counter ---------- */
+  .ticket{
+    position:sticky;
+    top:16px;
+    z-index:30;
+    display:flex;
+    justify-content:center;
+    margin:32px auto 8px;
+  }
+  .ticket-inner{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:999px;
+    padding:10px 26px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-family:'Noto Serif TC', serif;
+    font-weight:700;
+    font-size:15px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.35);
+    border:1px dashed var(--ink);
+  }
+  .ticket-inner .num{
+    font-size:20px;
+    color:var(--coral);
+    min-width:1.4em;
+    text-align:center;
+    display:inline-block;
+  }
+  .ticket-inner .dot{
+    width:6px;height:6px;border-radius:50%;background:var(--gold);
+  }
+
+  /* ---------- Singer filter ---------- */
+  .filter-wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+  .filter-box{
+    background:var(--ink-soft);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:20px 24px 22px;
+  }
+  .filter-title{
+    font-family:'Noto Serif TC', serif;
+    font-size:15px;
+    font-weight:700;
+    color:var(--gold-bright);
+    letter-spacing:0.05em;
+    margin-bottom:14px;
+  }
+  .filter-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .filter-chip{
+    position:relative;
+    display:inline-flex;
+  }
+  .filter-chip input{
+    position:absolute;
+    opacity:0;
+    width:100%; height:100%;
+    margin:0;
+    cursor:pointer;
+  }
+  .filter-chip span{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:9px 16px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    font-size:14px;
+    font-weight:500;
+    color:rgba(242,236,223,0.65);
+    transition:all 0.15s ease;
+  }
+  .filter-chip span::before{
+    content:"";
+    width:7px; height:7px;
+    border-radius:50%;
+    background:rgba(242,236,223,0.25);
+    transition:background 0.15s ease;
+  }
+  .filter-chip input:checked ~ span{
+    background:var(--gold);
+    border-color:var(--gold);
+    color:var(--ink);
+    font-weight:700;
+  }
+  .filter-chip input:checked ~ span::before{
+    background:var(--coral);
+  }
+  .filter-chip input:focus-visible ~ span{
+    outline:2px solid var(--gold-bright);
+    outline-offset:2px;
+  }
+  .page.hidden-by-filter{display:none;}
+
+  /* ---------- Main ---------- */
+  main{
+    max-width:920px;
+    margin:0 auto;
+    padding:24px 20px 40px;
+  }
+
+  .book{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+
+  .page{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:14px;
+    padding:28px 30px 20px;
+    position:relative;
+    box-shadow:0 14px 36px rgba(0,0,0,0.30);
+    border:1px solid rgba(27,31,43,0.06);
+  }
+  .page::before{
+    content:"";
+    position:absolute;
+    left:0; top:22px; bottom:22px;
+    width:4px;
+    background:var(--coral);
+    border-radius:0 4px 4px 0;
+  }
+
+  .page-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:16px;
+    padding-bottom:14px;
+    border-bottom:2px solid var(--ink);
+    margin-bottom:6px;
+    flex-wrap:wrap;
+  }
+  .singer-name{
+    font-family:'Noto Serif TC', serif;
+    font-weight:900;
+    font-size:26px;
+    letter-spacing:0.04em;
+  }
+  .singer-tag{
+    font-size:12.5px;
+    color:rgba(27,31,43,0.55);
+    font-weight:500;
+    letter-spacing:0.03em;
+  }
+
+  .song-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:13px 4px;
+    border-bottom:1px solid rgba(27,31,43,0.10);
+    cursor:pointer;
+  }
+  .song-row:last-of-type{border-bottom:none;}
+
+  /* KTV stamp checkbox */
+  .stamp{
+    flex:none;
+    width:34px; height:34px;
+    border-radius:50%;
+    border:2px solid var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    transition:transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+  .song-row input{
+    position:absolute;
+    opacity:0;
+    width:34px;height:34px;
+    margin:0;
+    cursor:pointer;
+  }
+  .stamp svg{
+    width:18px;height:18px;
+    opacity:0;
+    transform:scale(0.5) rotate(-15deg);
+    transition:opacity 0.15s ease, transform 0.15s ease;
+  }
+  .song-row input:checked ~ .stamp{
+    background:var(--coral);
+    border-color:var(--coral);
+  }
+  .song-row input:checked ~ .stamp svg{
+    opacity:1;
+    transform:scale(1) rotate(0deg);
+  }
+  .song-row input:focus-visible ~ .stamp{
+    outline:3px solid var(--gold);
+    outline-offset:2px;
+  }
+  .song-row:hover .stamp{transform:scale(1.05);}
+
+  .song-info{flex:1; min-width:0;}
+  .song-title{
+    font-weight:700;
+    font-size:16.5px;
+    transition:color 0.15s ease, text-decoration-color 0.15s ease;
+  }
+  .song-row input:checked ~ .song-info .song-title{
+    color:var(--coral);
+  }
+  .song-meta{
+    font-size:12.5px;
+    color:rgba(27,31,43,0.5);
+    margin-top:2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .stamp, .stamp svg, .song-row .stamp{transition:none;}
+  }
+
+  /* ---------- Summary ---------- */
+  .summary{
+    margin-top:34px;
+    background:var(--ink-soft);
+    border-radius:14px;
+    padding:26px 30px 28px;
+    border:1px solid var(--line);
+  }
+  .summary-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:16px;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .summary-head h2{
+    font-family:'Noto Serif TC', serif;
+    font-size:20px;
+    margin:0;
+    font-weight:700;
+    letter-spacing:0.03em;
+  }
+  .summary-count{
+    font-size:13px;
+    color:var(--gold-bright);
+    font-weight:700;
+  }
+  .empty-state{
+    color:rgba(242,236,223,0.45);
+    font-size:14px;
+    padding:18px 4px;
+    text-align:center;
+    border:1px dashed var(--line);
+    border-radius:10px;
+  }
+  .summary-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .summary-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:14px;
+    padding:9px 12px;
+    background:rgba(242,236,223,0.05);
+    border-radius:8px;
+    border:1px solid var(--line);
+  }
+  .summary-item .who{
+    color:var(--gold-bright);
+    font-weight:700;
+    flex:none;
+  }
+  .summary-item .what{color:rgba(242,236,223,0.85);}
+  .clear-btn{
+    background:none;
+    border:1px solid var(--line);
+    color:rgba(242,236,223,0.7);
+    font-family:'Noto Sans TC', sans-serif;
+    font-size:12.5px;
+    padding:7px 14px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:border-color 0.15s ease, color 0.15s ease;
+  }
+  .clear-btn:hover{border-color:var(--coral); color:var(--coral);}
+
+  footer{
+    text-align:center;
+    padding:30px 20px 50px;
+    font-size:12px;
+    color:rgba(242,236,223,0.35);
+    letter-spacing:0.05em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Taiwan Songstress Playlist</div>
+  <h1>浪潮點播<br><span class="accent">台灣女聲</span>精選歌單</h1>
+  <p class="lede">六位橫跨世代的台灣女歌手，勾選喜歡的歌曲，就像在 KTV 點歌本裡畫記號一樣。</p>
+</header>
+
+<div class="ticket">
+  <div class="ticket-inner">
+    <span class="dot"></span>
+    已點 <span class="num" id="countNum">0</span> 首
+  </div>
+</div>
+
+<div class="filter-wrap">
+  <div class="filter-box">
+    <div class="filter-title">歌手篩選</div>
+    <div class="filter-list" id="filterList">
+      <label class="filter-chip"><input type="checkbox" data-filter="鄧麗君" checked><span>鄧麗君</span></label>
+      <label class="filter-chip"><input type="checkbox" data-filter="張惠妹" checked><span>張惠妹</span></label>
+      <label class="filter-chip"><input type="checkbox" data-filter="蔡依林" checked><span>蔡依林</span></label>
+      <label class="filter-chip"><input type="checkbox" data-filter="楊丞琳" checked><span>楊丞琳</span></label>
+      <label class="filter-chip"><input type="checkbox" data-filter="徐佳瑩" checked><span>徐佳瑩</span></label>
+      <label class="filter-chip"><input type="checkbox" data-filter="田馥甲" checked><span>田馥甲</span></label>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="book" id="book">
+
+    <section class="page" data-singer="鄧麗君">
+      <div class="page-head">
+        <span class="singer-name">鄧麗君</span>
+        <span class="singer-tag">華語流行始祖・1970s–80s</span>
+      </div>
+      <label class="song-row"><input type="checkbox" data-song="月亮代表我的心"><span class="stamp">✓</span><span class="song-info"><div class="song-title">月亮代表我的心</div><div class="song-meta">經典抒情</div></span></label>
+      <label class="song-row"><input type="checkbox" data-song="甜蜜蜜"><span class="stamp">✓</span><span class="song-info"><div class="song-title">甜蜜蜜</div><div class="song-meta">南洋曲風</div></span></label>
+      <label class="song-row"><input type="checkbox" data-song="小城故事"><span class="stamp">✓</span><span class="song-info"><div class="song-title">小城故事</div><div class="song-meta">電影主題曲</div></span></label>
+      <label class="song-row"><input type="checkbox" data-song="我只在乎你"><span class="stamp">✓</span><span class="song-info"><div class="song-title">我只在乎你</div><div class="song-meta">日語改編</div></span></label>
+    </section>
+
+    <section class="page" data-singer="張惠妹">
+      <div class="page-head">
+        <span class="singer-name">張惠妹</span>
+        <span class="singer-tag">天后嗓音・1990s–now</span>
+      </div>
+      <label class="song-row"><input type="checkbox" data-song="姐妹"><span class="stamp">✓</span><span class="song-info"><div class="song-title">姐妹</div><div class="song-meta">出道經典</div></span></label>
+      <label class="song-row"><input type="checkbox" data-song="剪愛"><span class="stamp">✓</span><span class="song-info"><div class="song-title">剪愛</div><div class="song-meta">抒情代表作</div></span></label>
+      <label class="song-row"><input type="checkbox" data-song="聽海"><span class="stamp">✓</span><span class="song-info"><div class="song-title">聽海</div><div class="song-meta">KTV 必點</div></span></label>
+      <label class="song-row"><input type="checkbox" data-song="不顧一切"><span class="stamp">✓</span><span class="song-info"><div class="song-title">不顧一切</div><div class="song-meta">高音代表作</div></span></label>
+    </section>
+
+    <section class="page" data-singer="蔡依林">
+      <div class="page-head">
+        <span class="singer-name">蔡依林</span>
+        <span class="singer-tag">流行天后・舞曲女王</span>
+      </div>
+      <label class="song-row"><input type="checkbox" data-song="日不落"><span class="stamp">✓</span><span class="song-info"><div class="song-title">日不落</div><div class="song-meta">舞曲代表作</div></span></label>
+      <label class="song-row"><input type="checkbox" data-song="說愛你"><span class="stamp">✓</span><span class="song-info"><div class="song-title">說愛你</div><div class="song-meta">早期經典</div></span></label>
+      <label class="song-row"><input type="checkbox" data-song="倒帶"><span class="stamp">✓</span><span class="song-info"><div class="song-title">倒帶</div><div class="song-meta">抒情金曲</div></span></label>
+      <label class="song-row"><input type="checkbox" data-song="玫瑰少年"><span class="stamp">✓</span><span class="song-info"><div class="song-title">玫瑰少年</div><div class="song-meta">金曲獎年度歌曲</div></span></label>
+    </section>
+
+    <section class="page" data-singer="楊丞琳">
+      <div class="page-head">
+        <span class="singer-name">楊丞琳</span>
+        <span class="singer-tag">偶像劇歌姬・2000s</span>
+      </div>
+      <label class="song-row"><input type="checkbox" data-song="曖昧"><span class="stamp">✓</span><span class="song-info"><div class="song-title">曖昧</div><div class="song-meta">KTV 熱門</div></span></label>
+      <label class="song-row"><input type="checkbox" data-song="會呼吸的痛"><span class="stamp">✓</span><span class="song-info"><div class="song-title">會呼吸的痛</div><div class="song-meta">高難度金曲</div></span></label>
+      <label class="song-row"><input type="checkbox" data-song="慶祝"><span class="stamp">✓</span><span class="song-info"><div class="song-title">慶祝</div><div class="song-meta">正能量歌曲</div></span></label>
+    </section>
+
+    <section class="page" data-singer="徐佳瑩">
+      <div class="page-head">
+        <span class="singer-name">徐佳瑩</span>
+        <span class="singer-tag">創作才女・LaLa</span>
+      </div>
+      <label class="song-row"><input type="checkbox" data-song="失落沙洲"><span class="stamp">✓</span><span class="song-info"><div class="song-title">失落沙洲</div><div class="song-meta">出道代表作</div></span></label>
+      <label class="song-row"><input type="checkbox" data-song="尋人啟事"><span class="stamp">✓</span><span class="song-info"><div class="song-title">尋人啟事</div><div class="song-meta">抒情金曲</div></span></label>
+      <label class="song-row"><input type="checkbox" data-song="尋找完美生活"><span class="stamp">✓</span><span class="song-info"><div class="song-title">尋找完美生活</div><div class="song-meta">勵志曲風</div></span></label>
+    </section>
+
+    <section class="page" data-singer="田馥甲">
+      <div class="page-head">
+        <span class="singer-name">田馥甲</span>
+        <span class="singer-tag">Hebe・獨立音樂人</span>
+      </div>
+      <label class="song-row"><input type="checkbox" data-song="小幸運"><span class="stamp">✓</span><span class="song-info"><div class="song-title">小幸運</div><div class="song-meta">電影主題曲</div></span></label>
+      <label class="song-row"><input type="checkbox" data-song="渺小"><span class="stamp">✓</span><span class="song-info"><div class="song-title">渺小</div><div class="song-meta">個人代表作</div></span></label>
+      <label class="song-row"><input type="checkbox" data-song="無人知曉"><span class="stamp">✓</span><span class="song-info"><div class="song-title">無人知曉</div><div class="song-meta">個人專輯</div></span></label>
+    </section>
+
+  </div>
+
+  <div class="summary">
+    <div class="summary-head">
+      <h2>已選歌曲摘要</h2>
+      <button class="clear-btn" id="clearBtn">清除全部</button>
+    </div>
+    <div id="summaryBody">
+      <div class="empty-state">尚未點歌，勾選上方歌曲即可加入摘要</div>
+    </div>
+  </div>
+</main>
+
+<footer>浪潮點播 · 台灣女聲精選歌單</footer>
+
+<script>
+  const checkboxes = Array.from(document.querySelectorAll('.song-row input[type="checkbox"]'));
+  const countNum = document.getElementById('countNum');
+  const summaryBody = document.getElementById('summaryBody');
+  const clearBtn = document.getElementById('clearBtn');
+
+  function render(){
+    const checked = checkboxes.filter(cb => cb.checked);
+    countNum.textContent = checked.length;
+
+    if(checked.length === 0){
+      summaryBody.innerHTML = '<div class="empty-state">尚未點歌，勾選上方歌曲即可加入摘要</div>';
+      return;
+    }
+
+    const list = document.createElement('div');
+    list.className = 'summary-list';
+    checked.forEach(cb => {
+      const singer = cb.closest('.page').dataset.singer;
+      const song = cb.dataset.song;
+      const item = document.createElement('div');
+      item.className = 'summary-item';
+      item.innerHTML = '<span class="who">' + singer + '</span><span class="what">' + song + '</span>';
+      list.appendChild(item);
+    });
+    summaryBody.innerHTML = '';
+    summaryBody.appendChild(list);
+  }
+
+  checkboxes.forEach(cb => cb.addEventListener('change', render));
+  clearBtn.addEventListener('click', () => {
+    checkboxes.forEach(cb => cb.checked = false);
+    render();
+  });
+
+  render();
+
+  // ---- Singer filter ----
+  const filterInputs = Array.from(document.querySelectorAll('#filterList input[type="checkbox"]'));
+  const pages = Array.from(document.querySelectorAll('.page'));
+
+  function applyFilter(){
+    const activeSingers = filterInputs.filter(f => f.checked).map(f => f.dataset.filter);
+    pages.forEach(page => {
+      const singer = page.dataset.singer;
+      page.classList.toggle('hidden-by-filter', !activeSingers.includes(singer));
+    });
+  }
+
+  filterInputs.forEach(f => f.addEventListener('change', applyFilter));
+  applyFilter();
+</script>
+
+</body>
+</html>
