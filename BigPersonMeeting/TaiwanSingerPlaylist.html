@@ -31,7 +31,6 @@
     -webkit-font-smoothing:antialiased;
   }
   a{color:inherit;}
-
   /* ---------- Header ---------- */
   header{
     position:relative;
@@ -64,7 +63,6 @@
     margin:0 auto;
     line-height:1.9;
   }
-
   /* ---------- Ticket counter ---------- */
   .ticket{
     position:sticky;
@@ -98,7 +96,6 @@
   .ticket-inner .dot{
     width:6px;height:6px;border-radius:50%;background:var(--gold);
   }
-
   /* ---------- Tabs ---------- */
   .tab-wrap{
     max-width:920px;
@@ -142,10 +139,8 @@
   .tab-btn.active{color:var(--gold-bright);}
   .tab-btn.active::after{transform:scaleX(1);}
   .tab-btn:focus-visible{outline:2px solid var(--gold-bright); outline-offset:2px;}
-
   .tab-panel{display:none;}
   .tab-panel.active{display:block;}
-
   /* ---------- Singer filter ---------- */
   .filter-wrap{
     max-width:920px;
@@ -215,21 +210,18 @@
     outline-offset:2px;
   }
   .page.hidden-by-filter{display:none;}
-
   /* ---------- Main ---------- */
   main{
     max-width:920px;
     margin:0 auto;
     padding:0 20px 40px;
   }
-
   .book{
     display:flex;
     flex-direction:column;
     gap:22px;
     padding-top:22px;
   }
-
   .page{
     background:var(--paper);
     color:var(--ink);
@@ -247,7 +239,6 @@
     background:var(--coral);
     border-radius:0 4px 4px 0;
   }
-
   .page-head{
     display:flex;
     align-items:baseline;
@@ -270,7 +261,6 @@
     font-weight:500;
     letter-spacing:0.03em;
   }
-
   .song-row{
     display:flex;
     align-items:center;
@@ -280,7 +270,6 @@
     cursor:pointer;
   }
   .song-row:last-of-type{border-bottom:none;}
-
   /* KTV stamp checkbox */
   .stamp{
     flex:none;
@@ -319,7 +308,6 @@
     outline-offset:2px;
   }
   .song-row:hover .stamp{transform:scale(1.05);}
-
   .song-info{flex:1; min-width:0;}
   .song-title{
     font-weight:700;
@@ -334,11 +322,9 @@
     color:rgba(27,31,43,0.5);
     margin-top:2px;
   }
-
   @media (prefers-reduced-motion: reduce){
     .stamp, .stamp svg, .song-row .stamp{transition:none;}
   }
-
   /* ---------- Summary ---------- */
   .summary{
     margin-top:34px;
@@ -412,7 +398,6 @@
     transition:border-color 0.15s ease, color 0.15s ease;
   }
   .clear-btn:hover{border-color:var(--coral); color:var(--coral);}
-
   footer{
     text-align:center;
     padding:30px 20px 50px;
@@ -423,20 +408,17 @@
 </style>
 </head>
 <body>
-
 <header>
   <div class="eyebrow">Taiwan Singers Playlist</div>
   <h1>浪潮點播<br><span class="accent">台灣歌手</span>精選歌單</h1>
   <p class="lede">四大分類、橫跨世代的台灣歌手，勾選喜歡的歌曲，就像在 KTV 點歌本裡畫記號一樣。</p>
 </header>
-
 <div class="ticket">
   <div class="ticket-inner">
     <span class="dot"></span>
     已點 <span class="num" id="countNum">0</span> 首
   </div>
 </div>
-
 <div class="tab-wrap">
   <div class="tab-nav" role="tablist">
     <button class="tab-btn active" data-tab="female-mando" role="tab" aria-selected="true">台灣女聲國語歌手</button>
@@ -445,12 +427,9 @@
     <button class="tab-btn" data-tab="female-taiyu" role="tab" aria-selected="false">台灣女聲台語歌手</button>
   </div>
 </div>
-
 <main>
-
 <!-- ===================== TAB 1：台灣女聲國語歌手 ===================== -->
 <div class="tab-panel active" data-tab-panel="female-mando">
-
   <div class="filter-wrap">
     <div class="filter-box">
       <div class="filter-title">歌手篩選</div>
@@ -464,9 +443,7 @@
       </div>
     </div>
   </div>
-
   <div class="book" data-book="female-mando">
-
     <section class="page" data-singer="鄧麗君">
       <div class="page-head">
         <span class="singer-name">鄧麗君</span>
@@ -477,7 +454,6 @@
       <label class="song-row"><input type="checkbox" data-cat="女聲國語" data-song="小城故事"><span class="stamp">✓</span><span class="song-info"><div class="song-title">小城故事</div><div class="song-meta">電影主題曲</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="女聲國語" data-song="我只在乎你"><span class="stamp">✓</span><span class="song-info"><div class="song-title">我只在乎你</div><div class="song-meta">日語改編</div></span></label>
     </section>
-
     <section class="page" data-singer="張惠妹">
       <div class="page-head">
         <span class="singer-name">張惠妹</span>
@@ -488,7 +464,6 @@
       <label class="song-row"><input type="checkbox" data-cat="女聲國語" data-song="聽海"><span class="stamp">✓</span><span class="song-info"><div class="song-title">聽海</div><div class="song-meta">KTV 必點</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="女聲國語" data-song="不顧一切"><span class="stamp">✓</span><span class="song-info"><div class="song-title">不顧一切</div><div class="song-meta">高音代表作</div></span></label>
     </section>
-
     <section class="page" data-singer="蔡依林">
       <div class="page-head">
         <span class="singer-name">蔡依林</span>
@@ -499,7 +474,6 @@
       <label class="song-row"><input type="checkbox" data-cat="女聲國語" data-song="倒帶"><span class="stamp">✓</span><span class="song-info"><div class="song-title">倒帶</div><div class="song-meta">抒情金曲</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="女聲國語" data-song="玫瑰少年"><span class="stamp">✓</span><span class="song-info"><div class="song-title">玫瑰少年</div><div class="song-meta">金曲獎年度歌曲</div></span></label>
     </section>
-
     <section class="page" data-singer="楊丞琳">
       <div class="page-head">
         <span class="singer-name">楊丞琳</span>
@@ -509,7 +483,6 @@
       <label class="song-row"><input type="checkbox" data-cat="女聲國語" data-song="會呼吸的痛"><span class="stamp">✓</span><span class="song-info"><div class="song-title">會呼吸的痛</div><div class="song-meta">高難度金曲</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="女聲國語" data-song="慶祝"><span class="stamp">✓</span><span class="song-info"><div class="song-title">慶祝</div><div class="song-meta">正能量歌曲</div></span></label>
     </section>
-
     <section class="page" data-singer="徐佳瑩">
       <div class="page-head">
         <span class="singer-name">徐佳瑩</span>
@@ -519,7 +492,6 @@
       <label class="song-row"><input type="checkbox" data-cat="女聲國語" data-song="尋人啟事"><span class="stamp">✓</span><span class="song-info"><div class="song-title">尋人啟事</div><div class="song-meta">抒情金曲</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="女聲國語" data-song="尋找完美生活"><span class="stamp">✓</span><span class="song-info"><div class="song-title">尋找完美生活</div><div class="song-meta">勵志曲風</div></span></label>
     </section>
-
     <section class="page" data-singer="田馥甲">
       <div class="page-head">
         <span class="singer-name">田馥甲</span>
@@ -529,13 +501,10 @@
       <label class="song-row"><input type="checkbox" data-cat="女聲國語" data-song="渺小"><span class="stamp">✓</span><span class="song-info"><div class="song-title">渺小</div><div class="song-meta">個人代表作</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="女聲國語" data-song="無人知曉"><span class="stamp">✓</span><span class="song-info"><div class="song-title">無人知曉</div><div class="song-meta">個人專輯</div></span></label>
     </section>
-
   </div>
 </div>
-
 <!-- ===================== TAB 2：台灣男聲國語歌手 ===================== -->
 <div class="tab-panel" data-tab-panel="male-mando">
-
   <div class="filter-wrap">
     <div class="filter-box">
       <div class="filter-title">歌手篩選</div>
@@ -549,9 +518,7 @@
       </div>
     </div>
   </div>
-
   <div class="book" data-book="male-mando">
-
     <section class="page" data-singer="周杰倫">
       <div class="page-head">
         <span class="singer-name">周杰倫</span>
@@ -562,7 +529,6 @@
       <label class="song-row"><input type="checkbox" data-cat="男聲國語" data-song="青花瓷"><span class="stamp">✓</span><span class="song-info"><div class="song-title">青花瓷</div><div class="song-meta">中國風代表作</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="男聲國語" data-song="稻香"><span class="stamp">✓</span><span class="song-info"><div class="song-title">稻香</div><div class="song-meta">勵志曲風</div></span></label>
     </section>
-
     <section class="page" data-singer="王力宏">
       <div class="page-head">
         <span class="singer-name">王力宏</span>
@@ -572,7 +538,6 @@
       <label class="song-row"><input type="checkbox" data-cat="男聲國語" data-song="心跳"><span class="stamp">✓</span><span class="song-info"><div class="song-title">心跳</div><div class="song-meta">節奏經典</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="男聲國語" data-song="大城小愛"><span class="stamp">✓</span><span class="song-info"><div class="song-title">大城小愛</div><div class="song-meta">R&amp;B 曲風</div></span></label>
     </section>
-
     <section class="page" data-singer="陶喆">
       <div class="page-head">
         <span class="singer-name">陶喆</span>
@@ -582,7 +547,6 @@
       <label class="song-row"><input type="checkbox" data-cat="男聲國語" data-song="找自己"><span class="stamp">✓</span><span class="song-info"><div class="song-title">找自己</div><div class="song-meta">勵志金曲</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="男聲國語" data-song="melody"><span class="stamp">✓</span><span class="song-info"><div class="song-title">Melody</div><div class="song-meta">R&amp;B 曲風</div></span></label>
     </section>
-
     <section class="page" data-singer="蕭敬騰">
       <div class="page-head">
         <span class="singer-name">蕭敬騰</span>
@@ -592,7 +556,6 @@
       <label class="song-row"><input type="checkbox" data-cat="男聲國語" data-song="遇見"><span class="stamp">✓</span><span class="song-info"><div class="song-title">遇見</div><div class="song-meta">抒情金曲</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="男聲國語" data-song="沒有理由"><span class="stamp">✓</span><span class="song-info"><div class="song-title">沒有理由</div><div class="song-meta">KTV 熱門</div></span></label>
     </section>
-
     <section class="page" data-singer="林宥嘉">
       <div class="page-head">
         <span class="singer-name">林宥嘉</span>
@@ -602,7 +565,6 @@
       <label class="song-row"><input type="checkbox" data-cat="男聲國語" data-song="想自由"><span class="stamp">✓</span><span class="song-info"><div class="song-title">想自由</div><div class="song-meta">抒情金曲</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="男聲國語" data-song="全世界失眠"><span class="stamp">✓</span><span class="song-info"><div class="song-title">全世界失眠</div><div class="song-meta">KTV 熱門</div></span></label>
     </section>
-
     <section class="page" data-singer="張震嶽">
       <div class="page-head">
         <span class="singer-name">張震嶽</span>
@@ -612,13 +574,10 @@
       <label class="song-row"><input type="checkbox" data-cat="男聲國語" data-song="思念是一種病"><span class="stamp">✓</span><span class="song-info"><div class="song-title">思念是一種病</div><div class="song-meta">抒情金曲</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="男聲國語" data-song="自由"><span class="stamp">✓</span><span class="song-info"><div class="song-title">自由</div><div class="song-meta">個人風格代表</div></span></label>
     </section>
-
   </div>
 </div>
-
 <!-- ===================== TAB 3：台灣男聲台語歌手 ===================== -->
 <div class="tab-panel" data-tab-panel="male-taiyu">
-
   <div class="filter-wrap">
     <div class="filter-box">
       <div class="filter-title">歌手篩選</div>
@@ -632,9 +591,7 @@
       </div>
     </div>
   </div>
-
   <div class="book" data-book="male-taiyu">
-
     <section class="page" data-singer="葉啟田">
       <div class="page-head">
         <span class="singer-name">葉啟田</span>
@@ -643,7 +600,6 @@
       <label class="song-row"><input type="checkbox" data-cat="男聲台語" data-song="愛拼才會贏"><span class="stamp">✓</span><span class="song-info"><div class="song-title">愛拼才會贏</div><div class="song-meta">激勵代表作</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="男聲台語" data-song="內山姑娘要出嫁"><span class="stamp">✓</span><span class="song-info"><div class="song-title">內山姑娘要出嫁</div><div class="song-meta">經典金曲</div></span></label>
     </section>
-
     <section class="page" data-singer="郭金發">
       <div class="page-head">
         <span class="singer-name">郭金發</span>
@@ -652,7 +608,6 @@
       <label class="song-row"><input type="checkbox" data-cat="男聲台語" data-song="燒肉粽"><span class="stamp">✓</span><span class="song-info"><div class="song-title">燒肉粽</div><div class="song-meta">傳唱經典</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="男聲台語" data-song="行船人的純情曲"><span class="stamp">✓</span><span class="song-info"><div class="song-title">行船人的純情曲</div><div class="song-meta">經典金曲</div></span></label>
     </section>
-
     <section class="page" data-singer="洪榮宏">
       <div class="page-head">
         <span class="singer-name">洪榮宏</span>
@@ -661,7 +616,6 @@
       <label class="song-row"><input type="checkbox" data-cat="男聲台語" data-song="一支小雨傘"><span class="stamp">✓</span><span class="song-info"><div class="song-title">一支小雨傘</div><div class="song-meta">代表作</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="男聲台語" data-song="舊情綿綿"><span class="stamp">✓</span><span class="song-info"><div class="song-title">舊情綿綿</div><div class="song-meta">經典翻唱曲</div></span></label>
     </section>
-
     <section class="page" data-singer="陳雷">
       <div class="page-head">
         <span class="singer-name">陳雷</span>
@@ -670,7 +624,6 @@
       <label class="song-row"><input type="checkbox" data-cat="男聲台語" data-song="免失志"><span class="stamp">✓</span><span class="song-info"><div class="song-title">免失志</div><div class="song-meta">激勵代表作</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="男聲台語" data-song="車站"><span class="stamp">✓</span><span class="song-info"><div class="song-title">車站</div><div class="song-meta">KTV 熱門</div></span></label>
     </section>
-
     <section class="page" data-singer="王識賢">
       <div class="page-head">
         <span class="singer-name">王識賢</span>
@@ -679,7 +632,6 @@
       <label class="song-row"><input type="checkbox" data-cat="男聲台語" data-song="傷心酒店"><span class="stamp">✓</span><span class="song-info"><div class="song-title">傷心酒店</div><div class="song-meta">KTV 必點</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="男聲台語" data-song="出外靠朋友"><span class="stamp">✓</span><span class="song-info"><div class="song-title">出外靠朋友</div><div class="song-meta">代表作</div></span></label>
     </section>
-
     <section class="page" data-singer="蕭煌奇">
       <div class="page-head">
         <span class="singer-name">蕭煌奇</span>
@@ -688,13 +640,10 @@
       <label class="song-row"><input type="checkbox" data-cat="男聲台語" data-song="阿嬤的話"><span class="stamp">✓</span><span class="song-info"><div class="song-title">阿嬤的話</div><div class="song-meta">溫馨代表作</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="男聲台語" data-song="點歌的人"><span class="stamp">✓</span><span class="song-info"><div class="song-title">點歌的人</div><div class="song-meta">抒情金曲</div></span></label>
     </section>
-
   </div>
 </div>
-
 <!-- ===================== TAB 4：台灣女聲台語歌手 ===================== -->
 <div class="tab-panel" data-tab-panel="female-taiyu">
-
   <div class="filter-wrap">
     <div class="filter-box">
       <div class="filter-title">歌手篩選</div>
@@ -708,9 +657,7 @@
       </div>
     </div>
   </div>
-
   <div class="book" data-book="female-taiyu">
-
     <section class="page" data-singer="江蕙">
       <div class="page-head">
         <span class="singer-name">江蕙</span>
@@ -719,7 +666,6 @@
       <label class="song-row"><input type="checkbox" data-cat="女聲台語" data-song="家後"><span class="stamp">✓</span><span class="song-info"><div class="song-title">家後</div><div class="song-meta">經典代表作</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="女聲台語" data-song="落雨聲"><span class="stamp">✓</span><span class="song-info"><div class="song-title">落雨聲</div><div class="song-meta">傳唱金曲</div></span></label>
     </section>
-
     <section class="page" data-singer="詹雅雯">
       <div class="page-head">
         <span class="singer-name">詹雅雯</span>
@@ -728,7 +674,6 @@
       <label class="song-row"><input type="checkbox" data-cat="女聲台語" data-song="每一暝"><span class="stamp">✓</span><span class="song-info"><div class="song-title">每一暝</div><div class="song-meta">抒情代表作</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="女聲台語" data-song="心情"><span class="stamp">✓</span><span class="song-info"><div class="song-title">心情</div><div class="song-meta">KTV 熱門</div></span></label>
     </section>
-
     <section class="page" data-singer="黃乙玲">
       <div class="page-head">
         <span class="singer-name">黃乙玲</span>
@@ -737,7 +682,6 @@
       <label class="song-row"><input type="checkbox" data-cat="女聲台語" data-song="無字的情批"><span class="stamp">✓</span><span class="song-info"><div class="song-title">無字的情批</div><div class="song-meta">代表作</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="女聲台語" data-song="天堂路"><span class="stamp">✓</span><span class="song-info"><div class="song-title">天堂路</div><div class="song-meta">經典金曲</div></span></label>
     </section>
-
     <section class="page" data-singer="張秀卿">
       <div class="page-head">
         <span class="singer-name">張秀卿</span>
@@ -746,7 +690,6 @@
       <label class="song-row"><input type="checkbox" data-cat="女聲台語" data-song="十萬伏特"><span class="stamp">✓</span><span class="song-info"><div class="song-title">十萬伏特</div><div class="song-meta">代表作</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="女聲台語" data-song="悲情的城市"><span class="stamp">✓</span><span class="song-info"><div class="song-title">悲情的城市</div><div class="song-meta">經典金曲</div></span></label>
     </section>
-
     <section class="page" data-singer="潘越雲">
       <div class="page-head">
         <span class="singer-name">潘越雲</span>
@@ -755,7 +698,6 @@
       <label class="song-row"><input type="checkbox" data-cat="女聲台語" data-song="桂花巷"><span class="stamp">✓</span><span class="song-info"><div class="song-title">桂花巷</div><div class="song-meta">電影主題曲</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="女聲台語" data-song="情字這條路"><span class="stamp">✓</span><span class="song-info"><div class="song-title">情字這條路</div><div class="song-meta">經典金曲</div></span></label>
     </section>
-
     <section class="page" data-singer="蔡秋鳳">
       <div class="page-head">
         <span class="singer-name">蔡秋鳳</span>
@@ -764,10 +706,8 @@
       <label class="song-row"><input type="checkbox" data-cat="女聲台語" data-song="金包銀"><span class="stamp">✓</span><span class="song-info"><div class="song-title">金包銀</div><div class="song-meta">代表作</div></span></label>
       <label class="song-row"><input type="checkbox" data-cat="女聲台語" data-song="舞女"><span class="stamp">✓</span><span class="song-info"><div class="song-title">舞女</div><div class="song-meta">經典金曲</div></span></label>
     </section>
-
   </div>
 </div>
-
   <div class="summary">
     <div class="summary-head">
       <h2>已選歌曲摘要</h2>
@@ -778,24 +718,19 @@
     </div>
   </div>
 </main>
-
 <footer>浪潮點播 · 台灣歌手精選歌單</footer>
-
 <script>
   const checkboxes = Array.from(document.querySelectorAll('.song-row input[type="checkbox"]'));
   const countNum = document.getElementById('countNum');
   const summaryBody = document.getElementById('summaryBody');
   const clearBtn = document.getElementById('clearBtn');
-
   function render(){
     const checked = checkboxes.filter(cb => cb.checked);
     countNum.textContent = checked.length;
-
     if(checked.length === 0){
       summaryBody.innerHTML = '<div class="empty-state">尚未點歌，勾選上方歌曲即可加入摘要</div>';
       return;
     }
-
     const list = document.createElement('div');
     list.className = 'summary-list';
     checked.forEach(cb => {
@@ -810,20 +745,16 @@
     summaryBody.innerHTML = '';
     summaryBody.appendChild(list);
   }
-
   checkboxes.forEach(cb => cb.addEventListener('change', render));
   clearBtn.addEventListener('click', () => {
     checkboxes.forEach(cb => cb.checked = false);
     render();
   });
-
   render();
-
   // ---- Singer filter (scoped per tab) ----
   document.querySelectorAll('.tab-panel').forEach(panel => {
     const filterInputs = Array.from(panel.querySelectorAll('.filter-list input[type="checkbox"]'));
     const pages = Array.from(panel.querySelectorAll('.page'));
-
     function applyFilter(){
       const activeSingers = filterInputs.filter(f => f.checked).map(f => f.dataset.filter);
       pages.forEach(page => {
@@ -831,15 +762,12 @@
         page.classList.toggle('hidden-by-filter', !activeSingers.includes(singer));
       });
     }
-
     filterInputs.forEach(f => f.addEventListener('change', applyFilter));
     applyFilter();
   });
-
   // ---- Tab switching ----
   const tabBtns = Array.from(document.querySelectorAll('.tab-btn'));
   const tabPanels = Array.from(document.querySelectorAll('.tab-panel'));
-
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const target = btn.dataset.tab;
@@ -853,6 +781,5 @@
     });
   });
 </script>
-
 </body>
 </html>
