@@ -1,196 +1,94 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>超級巨星 KTV 林口旗艦店備忘錄</title>
+<section>
+  <h2>附近停車場</h2>
 
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC",
-                   "Microsoft JhengHei", sans-serif;
-      line-height: 1.7;
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 24px;
-      color: #333;
-      background: #f7f7f7;
-    }
+  <p>
+    <strong>提醒：</strong>
+    以下停車場位於超級巨星 KTV 林口旗艦店周邊。
+    距離為地圖搜尋參考值，實際步行及駕車時間會依入口、交通狀況與道路動線變化。
+  </p>
 
-    .memo {
-      background: #fff;
-      padding: 28px;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    }
+  <div class="parking-list">
 
-    h1 {
-      color: #7a3e9d;
-      margin-top: 0;
-    }
+    <article class="parking-card">
+      <h3>1. 台灣聯通停車場－林口文林場</h3>
+      <p><strong>地址：</strong>新北市林口區文化三路一段 447 巷 29 號</p>
+      <p><strong>距離參考：</strong>約 0.35 公里</p>
+      <p><strong>特色：</strong>距離 KTV 較近，可作為優先查詢選項。</p>
+      <a
+        class="map-button"
+        href="https://www.google.com/maps/search/?api=1&query=台灣聯通停車場林口文林場"
+        target="_blank"
+        rel="noopener">
+        開啟 Google 地圖
+      </a>
+    </article>
 
-    h2 {
-      color: #555;
-      border-left: 5px solid #9b59b6;
-      padding-left: 10px;
-      margin-top: 28px;
-    }
+    <article class="parking-card">
+      <h3>2. Times 林口四維路停車場</h3>
+      <p><strong>地址：</strong>新北市林口區四維路 102 號旁</p>
+      <p><strong>距離參考：</strong>約 0.68 公里</p>
+      <p><strong>特色：</strong>資料顯示為 24 小時營業；費率請依現場公告。</p>
+      <a
+        class="map-button"
+        href="https://www.google.com/maps/search/?api=1&query=Times林口四維路停車場"
+        target="_blank"
+        rel="noopener">
+        開啟 Google 地圖
+      </a>
+    </article>
 
-    .important {
-      background: #fff4d6;
-      border: 1px solid #f0c36d;
-      padding: 14px;
-      border-radius: 8px;
-    }
+    <article class="parking-card">
+      <h3>3. 林口行政園區公有停車場</h3>
+      <p><strong>地址：</strong>新北市林口區南勢里</p>
+      <p><strong>距離參考：</strong>約 0.95 公里</p>
+      <p><strong>特色：</strong>公有停車場，設有無障礙停車相關設施。</p>
+      <a
+        class="map-button"
+        href="https://www.google.com/maps/search/?api=1&query=林口行政園區公有停車場"
+        target="_blank"
+        rel="noopener">
+        開啟 Google 地圖
+      </a>
+    </article>
 
-    .contact,
-    .parking {
-      background: #f0e8f7;
-      padding: 15px;
-      border-radius: 8px;
-    }
+    <article class="parking-card">
+      <h3>4. 嘟嘟房停車場－林口文化二路 2 站</h3>
+      <p><strong>地址：</strong>文化二路二段 88 巷與民享路路口</p>
+      <p><strong>距離參考：</strong>約 1.12 公里</p>
+      <p><strong>特色：</strong>可作為民富街周邊車位不足時的替代選項。</p>
+      <a
+        class="map-button"
+        href="https://www.google.com/maps/search/?api=1&query=嘟嘟房停車場林口文化二路二站"
+        target="_blank"
+        rel="noopener">
+        開啟 Google 地圖
+      </a>
+    </article>
 
-    .parking {
-      background: #eaf4ea;
-    }
+    <article class="parking-card">
+      <h3>5. 林口停三公有停車場</h3>
+      <p><strong>地址：</strong>新北市林口區中山路</p>
+      <p><strong>距離參考：</strong>約 1.86 公里</p>
+      <p><strong>特色：</strong>公有停車場，資料顯示為 24 小時營業。</p>
+      <a
+        class="map-button"
+        href="https://www.google.com/maps/search/?api=1&query=林口停三公有停車場"
+        target="_blank"
+        rel="noopener">
+        開啟 Google 地圖
+      </a>
+    </article>
 
-    ul,
-    ol {
-      padding-left: 24px;
-    }
+  </div>
 
-    a {
-      color: #6c3483;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .map-button {
-      display: inline-block;
-      background: #4285f4;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 6px;
-      margin: 6px 0;
-    }
-
-    .map-button:hover {
-      background: #3367d6;
-      text-decoration: none;
-    }
-
-    .date {
-      color: #777;
-      font-size: 0.9em;
-    }
-
-    .checklist label {
-      display: block;
-      margin: 8px 0;
-    }
-
-    footer {
-      margin-top: 30px;
-      color: #777;
-      font-size: 0.9em;
-      border-top: 1px solid #ddd;
-      padding-top: 15px;
-    }
-  </style>
-</head>
-
-<body>
-  <main class="memo">
-    <h1>超級巨星 KTV 林口旗艦店</h1>
-    <p class="date">個人備忘錄｜2026 年 8 月 16 日</p>
-
-    <section>
-      <h2>基本資料</h2>
-
-      <div class="contact">
-        <p><strong>地址：</strong>新北市林口區南勢里民富街 68 號</p>
-
-        <p>
-          <strong>電話：</strong>
-          <a href="tel:0289787799">02-8978-7799</a>
-        </p>
-
-        <p>
-          <strong>營業狀況：</strong>
-          官方資料顯示為 24 小時營業；前往前仍建議先電話確認。
-        </p>
-
-        <p>
-          <strong>官方網站：</strong>
-          <a href="https://www.superstarktv.com.tw/"
-             target="_blank"
-             rel="noopener">
-            超級巨星自助式 KTV
-          </a>
-        </p>
-      </div>
-    </section>
-
-    <section>
-      <h2>Google 地圖位置</h2>
-
-      <p>
-        <a
-          class="map-button"
-          href="https://www.google.com/maps/search/?api=1&query=超級巨星自助式KTV林口旗艦店"
-          target="_blank"
-          rel="noopener">
-          在 Google 地圖開啟 KTV 位置
-        </a>
-      </p>
-
-      <p>
-        <strong>導航地址：</strong>
-        新北市林口區民富街 68 號
-      </p>
-
-      <p>
-        也可以在 Google 地圖搜尋：
-        <strong>超級巨星自助式 KTV 林口旗艦店</strong>
-      </p>
-    </section>
-
-    <section>
-      <h2>停車資訊</h2>
-
-      <div class="parking">
-        <p>
-          <strong>附近停車場：</strong>
-          Times 林口民富街停車場
-        </p>
-
-        <p>
-          <strong>地址：</strong>
-          新北市林口區民富街 110 號旁
-        </p>
-
-        <p>
-          <strong>營業狀況：</strong>
-          搜尋資料顯示為 24 小時營業。
-        </p>
-
-        <p>
-          <strong>付款方式：</strong>
-          支援信用卡；實際費率及車位狀況請依現場公告。
-        </p>
-
-        <p>
-          <a
-            class="map-button"
-            href="https://www.google.com/maps/search/?api=1&query=Times林口民富街停車場"
-            target="_blank"
-            rel="noopener">
-            在 Google 地圖開啟停車場位置
-          </a>
-        </p>
-
-        <p>
-          停車場位
+  <div class="important">
+    <p><strong>停車使用建議：</strong></p>
+    <ol>
+      <li>先查看距離較近的台灣聯通林口文林場。</li>
+      <li>若車位不足，再查看 Times 林口四維路停車場。</li>
+      <li>週末、晚間及連續假日請提早抵達。</li>
+      <li>進場前確認停車費率、付款方式及最大停車時間。</li>
+      <li>不要只依賴搜尋結果的「營業中」狀態，現場車位仍可能已滿。</li>
+    </ol>
+  </div>
+</section>
