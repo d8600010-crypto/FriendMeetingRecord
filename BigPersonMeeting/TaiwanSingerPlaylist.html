@@ -480,7 +480,7 @@
   const submitBtn = document.getElementById('submitBtn');
   const syncStatus = document.getElementById('syncStatus');
 
-  let songsData = [];   // 從試算表讀回的原始資料
+  let songsData = [];   // 從試算表讀回的原始資料：{Tab, TabLabel, Category, Singer, Song, Note}
   let tabsOrder = [];   // 依出現順序排列的 tab id
   let checkboxes = [];  // 目前渲染出的所有 checkbox
 
@@ -496,7 +496,7 @@
       if(!res.ok) throw new Error('HTTP ' + res.status);
       songsData = await res.json();
       if(!Array.isArray(songsData) || songsData.length === 0){
-        stateMsg.textContent = '試算表的 Songs 工作表目前是空的，請先在 Apps Script 執行一次 setup()。';
+        stateMsg.textContent = '試算表目前讀不到資料，請確認 女聲國語/男聲國語/男聲台語/女聲台語 這幾個分頁裡有內容。';
         return;
       }
       buildUI();
@@ -506,7 +506,7 @@
   }
 
   function buildUI(){
-    // 依 Tab 分組，保留第一次出現的順序
+    // 依 Tab（分頁）分組，保留第一次出現的順序
     const tabs = new Map();
     songsData.forEach(row => {
       if(!tabs.has(row.Tab)){
@@ -514,9 +514,9 @@
       }
       const tab = tabs.get(row.Tab);
       if(!tab.singers.has(row.Singer)){
-        tab.singers.set(row.Singer, { tag: row.SingerTag, cat: row.Category, songs: [] });
+        tab.singers.set(row.Singer, { cat: row.Category, songs: [] });
       }
-      tab.singers.get(row.Singer).songs.push({ song: row.Song, meta: row.SongMeta });
+      tab.singers.get(row.Singer).songs.push({ song: row.Song, note: row.Note });
     });
     tabsOrder = Array.from(tabs.keys());
 
@@ -567,16 +567,16 @@
 
         const head = document.createElement('div');
         head.className = 'page-head';
-        head.innerHTML = '<span class="singer-name">' + escapeHtml(singerName) + '</span><span class="singer-tag">' + escapeHtml(singer.tag || '') + '</span>';
+        head.innerHTML = '<span class="singer-name">' + escapeHtml(singerName) + '</span><span class="singer-tag">' + singer.songs.length + ' 首歌</span>';
         page.appendChild(head);
 
         singer.songs.forEach(s => {
           const row = document.createElement('label');
           row.className = 'song-row';
           row.innerHTML =
-            '<input type="checkbox" data-cat="' + escapeAttr(singer.cat || '') + '" data-song="' + escapeAttr(s.song) + '">' +
+            '<input type="checkbox" data-cat="' + escapeAttr(singer.cat || '') + '" data-song="' + escapeAttr(s.song) + '" data-note="' + escapeAttr(s.note || '') + '">' +
             '<span class="stamp"><span class="mark">✓</span></span>' +
-            '<span class="song-info"><div class="song-title">' + escapeHtml(s.song) + '</div><div class="song-meta">' + escapeHtml(s.meta || '') + '</div></span>';
+            '<span class="song-info"><div class="song-title">' + escapeHtml(s.song) + '</div><div class="song-meta">' + escapeHtml(s.note || '') + '</div></span>';
           page.appendChild(row);
         });
 
@@ -639,8 +639,9 @@
       return {
         tab: page.dataset.tab,
         singer: page.dataset.singer,
-        cat: cb.dataset.cat,
-        song: cb.dataset.song
+        category: cb.dataset.cat,
+        song: cb.dataset.song,
+        note: cb.dataset.note
       };
     });
   }
@@ -658,7 +659,7 @@
     selected.forEach(item => {
       const el = document.createElement('div');
       el.className = 'summary-item';
-      el.innerHTML = '<span class="cat">' + escapeHtml(item.cat) + '</span><span class="who">' + escapeHtml(item.singer) + '</span><span class="what">' + escapeHtml(item.song) + '</span>';
+      el.innerHTML = '<span class="cat">' + escapeHtml(item.category) + '</span><span class="who">' + escapeHtml(item.singer) + '</span><span class="what">' + escapeHtml(item.song) + '</span>';
       list.appendChild(el);
     });
     summaryBody.innerHTML = '';
@@ -680,7 +681,7 @@
       const res = await fetch(SCRIPT_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // 避免觸發 CORS 預檢
-        body: JSON.stringify({ songs: selected })
+        body: JSON.stringify({ songs: selected }) // 每筆為 {tab, singer, category, song, note}
       });
       const data = await res.json();
       if(data.status === 'ok'){
