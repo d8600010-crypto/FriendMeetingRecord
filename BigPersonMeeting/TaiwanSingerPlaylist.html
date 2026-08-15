@@ -425,6 +425,7 @@
     <button class="tab-btn" data-tab="male-mando" role="tab" aria-selected="false">台灣男聲國語歌手</button>
     <button class="tab-btn" data-tab="male-taiyu" role="tab" aria-selected="false">台灣男聲台語歌手</button>
     <button class="tab-btn" data-tab="female-taiyu" role="tab" aria-selected="false">台灣女聲台語歌手</button>
+    <button class="tab-btn" data-tab="favorites" role="tab" aria-selected="false">我的最愛</button>
   </div>
 </div>
 <main>
@@ -718,32 +719,56 @@
     </div>
   </div>
 </main>
+<!-- ===================== TAB 5：我的最愛 ===================== -->
+<div class="tab-panel" data-tab-panel="favorites">
+  <div style="max-width:920px;margin:0 auto;padding:24px 20px 40px;">
+    <div class="page" style="margin:0;">
+      <div class="page-head">
+        <span class="singer-name">我的最愛</span>
+        <span class="singer-tag">已勾選的所有歌曲</span>
+      </div>
+      <div id="favoritesBody">
+        <div class="empty-state" style="color:rgba(27,31,43,0.4);border-color:rgba(27,31,43,0.15);">尚未點歌，到各歌手分頁勾選歌曲後會出現在這裡</div>
+      </div>
+    </div>
+  </div>
+</div>
 <footer>浪潮點播 · 台灣歌手精選歌單</footer>
 <script>
   const checkboxes = Array.from(document.querySelectorAll('.song-row input[type="checkbox"]'));
   const countNum = document.getElementById('countNum');
   const summaryBody = document.getElementById('summaryBody');
+  const favoritesBody = document.getElementById('favoritesBody');
   const clearBtn = document.getElementById('clearBtn');
+  function buildItem(cb){
+    const singer = cb.closest('.page').dataset.singer;
+    const song = cb.dataset.song;
+    const cat = cb.dataset.cat;
+    const item = document.createElement('div');
+    item.className = 'summary-item';
+    item.innerHTML = '<span class="cat">' + cat + '</span><span class="who">' + singer + '</span><span class="what">' + song + '</span>';
+    return item;
+  }
   function render(){
     const checked = checkboxes.filter(cb => cb.checked);
     countNum.textContent = checked.length;
     if(checked.length === 0){
       summaryBody.innerHTML = '<div class="empty-state">尚未點歌，勾選上方歌曲即可加入摘要</div>';
+      favoritesBody.innerHTML = '<div class="empty-state" style="color:rgba(27,31,43,0.4);border-color:rgba(27,31,43,0.15);">尚未點歌，到各歌手分頁勾選歌曲後會出現在這裡</div>';
       return;
     }
     const list = document.createElement('div');
     list.className = 'summary-list';
+    const favList = document.createElement('div');
+    favList.className = 'summary-list';
     checked.forEach(cb => {
-      const singer = cb.closest('.page').dataset.singer;
-      const song = cb.dataset.song;
-      const cat = cb.dataset.cat;
-      const item = document.createElement('div');
-      item.className = 'summary-item';
-      item.innerHTML = '<span class="cat">' + cat + '</span><span class="who">' + singer + '</span><span class="what">' + song + '</span>';
-      list.appendChild(item);
+      list.appendChild(buildItem(cb));
+      favList.appendChild(buildItem(cb));
     });
     summaryBody.innerHTML = '';
     summaryBody.appendChild(list);
+    favoritesBody.innerHTML = '';
+    favoritesBody.appendChild(favList);
   }
   checkboxes.forEach(cb => cb.addEventListener('change', render));
   clearBtn.addEventListener('click', () => {
